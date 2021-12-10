@@ -66,7 +66,7 @@ public boolean isExistPhone(String Phone) {
         }return null;
     }
 //    6. Đọc danh bạ từ file CSV
-public  List<PhoneBook> docHocSinhTuDanhSach(File file) {
+public  List<PhoneBook> readPhoneBook(File file) {
     List<PhoneBook> phoneList = new ArrayList<>();
     try {
         String line;
@@ -90,13 +90,13 @@ public  List<PhoneBook> docHocSinhTuDanhSach(File file) {
     return phoneList;
 }
 //    7. Lưu danh bạ file csv
-public static void ghiDuLieuSinhVien(String path, List<PhoneBook> list) {
+public static void WritePhoneBook(String path, List<PhoneBook> list) {
     String a = null;
     try {
         FileWriter writer = new FileWriter(path, true);
         BufferedWriter bufferedWriter = new BufferedWriter(writer);
         for (PhoneBook danhba : list) {
-            a = String.format("%s,%s,%s,%s,%f,%s", danhba.getPhonenumber(), danhba.getGroup(), danhba.getFullName(), danhba.getGender(), danhba.getAddress());
+            a = String.format("%s,%s,%s,%s,%s,%s,%s,%s", danhba.getPhonenumber(), danhba.getGroup(), danhba.getFullName(), danhba.getGender(), danhba.getAddress(),danhba.getBirthday(),danhba.getEmail());
             bufferedWriter.write(a);
         }
     } catch (IOException e) {

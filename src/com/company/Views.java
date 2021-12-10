@@ -118,7 +118,7 @@ public void update() {
         Scanner scanner = new Scanner(System.in);
         String path = scanner.nextLine();
             File file = new File(path);
-            List<PhoneBook> student = phoneBookService.docHocSinhTuDanhSach(file);
+            List<PhoneBook> student = phoneBookService.readPhoneBook(file);
             System.out.println(student);
         }
 //    7. Lưu danh bạ vào file CSV
@@ -126,7 +126,7 @@ public void update() {
         List<PhoneBook> lists = new ArrayList<>();
         Scanner scanner = new Scanner(System.in);
         String path = "data/contacts.csv";
-        phoneBookService.ghiDuLieuSinhVien(path,lists);
+        phoneBookService.WritePhoneBook(path,lists);
     }
 
 }
