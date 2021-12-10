@@ -74,6 +74,19 @@ public class PhoneBook {
     public void setEmail(String email) {
         Email = email;
     }
+
+    @Override
+    public String toString() {
+        return "PhoneBook{" +
+                "Phonenumber='" + Phonenumber + '\'' +
+                ", Group='" + Group + '\'' +
+                ", FullName='" + FullName + '\'' +
+                ", Gender='" + Gender + '\'' +
+                ", Address='" + Address + '\'' +
+                ", Birthday='" + Birthday + '\'' +
+                ", Email='" + Email + '\'' +
+                '}';
+    }
 }
 
 
