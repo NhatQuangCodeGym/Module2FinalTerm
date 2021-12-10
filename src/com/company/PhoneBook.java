@@ -54,4 +54,15 @@ public class PhoneBook {
     public void setAddress(String address) {
         Address = address;
     }
+
+    @Override
+    public String toString() {
+        return "PhoneBook{" +
+                "Phonenumber='" + Phonenumber + '\'' +
+                ", Group='" + Group + '\'' +
+                ", FullName='" + FullName + '\'' +
+                ", Gender='" + Gender + '\'' +
+                ", Address='" + Address + '\'' +
+                '}';
+    }
 }

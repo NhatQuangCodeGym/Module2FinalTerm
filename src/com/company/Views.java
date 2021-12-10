@@ -1,10 +1,17 @@
 package com.company;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class Views {
     private final PhoneBookService phoneBookService = new PhoneBookService();
-
+//1. Hiển thị danh bạ
+    public void showPhoneBookList(){
+        List<PhoneBook> list = phoneBookService.getPhoneList();
+        for ( PhoneBook danhba : list ){
+            System.out.println(danhba.toString());
+        }
+    }
 //2. Thêm một mục danh bạ
     public void addIntoPhoneBook(){
         Scanner scanner = new Scanner(System.in);
@@ -41,6 +48,21 @@ public class Views {
         String choice = scanner.nextLine();
         if(choice == "1"){
             System.out.println("Nhập vào sđt bạn muốn tìm");
+            String number = scanner.nextLine();
+            PhoneBook phoneBook = phoneBookService.findUserPhone(number);
+            if( phoneBook != null){
+                System.out.println("Có sđt: " + phoneBook );
+            }else
+                System.out.println(" Không có sđt như trên trong danh bạ");
+        }else {
+            System.out.println(" Nhập vào tên người dùng ");
+            String name = scanner.nextLine();
+            PhoneBook phoneBook = phoneBookService.findUserName(name);
+            if( phoneBook != null){
+                System.out.println("Có sđt: " + phoneBook );
+            }else
+                System.out.println(" Không có sđt như trên trong danh bạ");
+
         }
     }
 }

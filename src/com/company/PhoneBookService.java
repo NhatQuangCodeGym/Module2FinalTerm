@@ -14,9 +14,10 @@ public class PhoneBookService {
         phoneBookList.add(danhba);
     }
 //    3. Cập nhật thông tin danh bạ
-//    public boolean updatePhoneList(String number){
-//
-//    }
+    public void updatePhoneList(String number){
+
+
+    }
 //    4. Xoá danh bạ theo số điện thoại
     public boolean removePhoneBook(String number){
         ArrayList<PhoneBook> listremove = new ArrayList<>();

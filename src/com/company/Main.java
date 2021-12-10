@@ -6,6 +6,7 @@ public class Main {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+        Views view = new Views();
         do {
 
             System.out.println("----CHƯƠNG TRÌNH QUẢN LÝ DANH BẠ----");
@@ -25,19 +26,22 @@ public class Main {
                 if (choice > 0 && choice < 4) {
                     switch (choice) {
                         case 1:
-                            studentManager();
+                            view.showPhoneBookList();
                             break;
                         case 2:
-                            instructorManager();
+                            view.addIntoPhoneBook();
                             break;
-                        case 3:
-                            classRoomManager();
-                            break;
+//                        case 3:
+//                            classRoomManager();
+//                            break;
                         case 4:
+                            view.checkRemove();
                             break;
                         case 5:
+                            view.checkPhoneBook();
                             break;
                         case 6:
+
                             break;
                         case 7:
                             break;
