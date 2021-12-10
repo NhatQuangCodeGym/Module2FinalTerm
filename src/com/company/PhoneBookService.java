@@ -1,7 +1,10 @@
 package com.company;
 
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class PhoneBookService {
     List<PhoneBook> phoneBookList = new ArrayList<>();
@@ -14,10 +17,23 @@ public class PhoneBookService {
         phoneBookList.add(danhba);
     }
 //    3. Cập nhật thông tin danh bạ
-    public void updatePhoneList(String number){
-
-
+public PhoneBook getPhone(String phone) {
+    for (PhoneBook phoneBook : phoneBookList) {
+        if (phoneBook.getPhonenumber().equals(phone))
+            return phoneBook;
     }
+    return null;
+}
+public void update(String phone, String group, String name, String gender, String address, String dob, String email) {
+    PhoneBook phoneBook = getPhone(phone);
+    phoneBook.setGroup(group);
+    phoneBook.setFullName(name);
+    phoneBook.setGender(gender);
+    phoneBook.setAddress(address);
+    phoneBook.setBirthday(dob);
+    phoneBook.setEmail(email);
+    System.out.println("Updated");
+}
 //    4. Xoá danh bạ theo số điện thoại
     public boolean removePhoneBook(String number){
         ArrayList<PhoneBook> listremove = new ArrayList<>();
@@ -36,6 +52,9 @@ public class PhoneBookService {
             }
         }return null;
     }
+    public boolean isExistName(String name) {
+        return findUserName(name) != null;
+    }
     public PhoneBook findUserName(String name){
         for (PhoneBook ten :phoneBookList){
             if(ten.getFullName().equals(name)){
@@ -44,5 +63,42 @@ public class PhoneBookService {
         }return null;
     }
 //    6. Đọc danh bạ từ file CSV
+public  List<PhoneBook> docHocSinhTuDanhSach(File file) {
+    List<PhoneBook> phoneList = new ArrayList<>();
+    try {
+        String line;
+        BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
+        while ((line = bufferedReader.readLine()) != null) {
+            String data[] = line.split(",");
+            String number = data[0];
+            String group = data[1];
+            String name = data[2];
+            String gender = data[3];
+            String address = data[4];
+            String birthday = data[5];
+            String email = data[6];
+            phoneList.add(new  PhoneBook(number,group,name,gender,address,birthday,email));
+        }
+    } catch (FileNotFoundException e) {
+        System.err.println("File not found");
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+    return phoneList;
+}
+//    7. Lưu danh bạ file csv
+public static void ghiDuLieuSinhVien(String path, List<PhoneBook> list) {
+    String a = null;
+    try {
+        FileWriter writer = new FileWriter(path, true);
+        BufferedWriter bufferedWriter = new BufferedWriter(writer);
+        for (PhoneBook danhba : list) {
+            a = String.format("%s,%s,%s,%s,%f,%s", danhba.getPhonenumber(), danhba.getGroup(), danhba.getFullName(), danhba.getGender(), danhba.getAddress());
+            bufferedWriter.write(a);
+        }
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+}
     }
 

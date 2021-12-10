@@ -23,7 +23,7 @@ public class Main {
 
             try {
                 int choice = Integer.parseInt(scanner.next());
-                if (choice > 0 && choice < 4) {
+                if (choice > 0 && choice < 9) {
                     switch (choice) {
                         case 1:
                             view.showPhoneBookList();
@@ -31,9 +31,9 @@ public class Main {
                         case 2:
                             view.addIntoPhoneBook();
                             break;
-//                        case 3:
-//                            classRoomManager();
-//                            break;
+                        case 3:
+                            view.update();
+                            break;
                         case 4:
                             view.checkRemove();
                             break;
@@ -41,9 +41,10 @@ public class Main {
                             view.checkPhoneBook();
                             break;
                         case 6:
-
+                            view.readPhoneBookFromFile();
                             break;
                         case 7:
+                            view.printPhoneBook();
                             break;
                     }
                 } else if (choice == 8) {

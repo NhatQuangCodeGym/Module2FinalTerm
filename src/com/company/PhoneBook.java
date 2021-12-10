@@ -6,13 +6,17 @@ public class PhoneBook {
     private String FullName;
     private String Gender;
     private String Address;
+    private String Birthday;
+    private String Email;
 
-    public PhoneBook(String phonenumber, String group, String fullName, String gender, String address) {
+    public PhoneBook(String phonenumber, String group, String fullName, String gender, String address, String birthday, String email) {
         Phonenumber = phonenumber;
         Group = group;
         FullName = fullName;
         Gender = gender;
         Address = address;
+        Birthday = birthday;
+        Email = email;
     }
 
     public String getPhonenumber() {
@@ -55,14 +59,21 @@ public class PhoneBook {
         Address = address;
     }
 
-    @Override
-    public String toString() {
-        return "PhoneBook{" +
-                "Phonenumber='" + Phonenumber + '\'' +
-                ", Group='" + Group + '\'' +
-                ", FullName='" + FullName + '\'' +
-                ", Gender='" + Gender + '\'' +
-                ", Address='" + Address + '\'' +
-                '}';
+    public String getBirthday() {
+        return Birthday;
+    }
+
+    public void setBirthday(String birthday) {
+        Birthday = birthday;
+    }
+
+    public String getEmail() {
+        return Email;
+    }
+
+    public void setEmail(String email) {
+        Email = email;
     }
 }
+
+
