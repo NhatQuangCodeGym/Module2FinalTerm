@@ -45,6 +45,9 @@ public void update(String phone, String group, String name, String gender, Strin
         return check;
     }
 //    5. Tim danh ba theo sđt hoặc họ tên
+public boolean isExistPhone(String Phone) {
+    return findUserName(Phone) != null;
+}
     public PhoneBook findUserPhone(String number){
         for( PhoneBook danhba : phoneBookList){
             if(danhba.getPhonenumber().equals(number)){

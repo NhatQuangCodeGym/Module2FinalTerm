@@ -41,7 +41,6 @@ public class Views {
 //    3. Sửa thông tin danh bạ
 public void update() {
         Scanner scanner = new Scanner(System.in);
-    public void update() {
         regexEmail = new RegexEmail();
         regexPhone = new RegexPhone();
         try {
@@ -49,7 +48,7 @@ public void update() {
                 System.out.println("Enter phone number to update: ");
                 String phone = scanner.nextLine();
                 if (regexPhone.validate(phone)) {
-                    if (!phoneBookService.isExist(phone))
+                    if (!phoneBookService.isExistPhone(phone))
                         System.out.println("Phone number not found");
                     else {
                         System.out.println("Enter group: ");
@@ -77,7 +76,6 @@ public void update() {
             System.err.println("Error");
         }
     }
-}
 //    4. Xoá danh bạ
     public void checkRemove(){
         Scanner scanner = new Scanner(System.in);
@@ -127,10 +125,8 @@ public void update() {
     public void printPhoneBook(){
         List<PhoneBook> lists = new ArrayList<>();
         Scanner scanner = new Scanner(System.in);
-        System.out.println(" Nhập đường dẫn bạn muốn lưu");
-        String path = scanner.nextLine();
+        String path = "data/contacts.csv";
         phoneBookService.ghiDuLieuSinhVien(path,lists);
-
     }
 
 }
