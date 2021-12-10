@@ -8,7 +8,8 @@ import java.util.regex.Pattern;
 
 public class PhoneBookService {
     List<PhoneBook> phoneBookList = new ArrayList<>();
-//    1. Xem danh sách
+
+    //    1. Xem danh sách
     public List<PhoneBook> getPhoneList(){
     return phoneBookList;
     }
@@ -70,17 +71,17 @@ public  List<PhoneBook> readPhoneBook(File file) {
     List<PhoneBook> phoneList = new ArrayList<>();
     try {
         String line;
-        BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
+        BufferedReader bufferedReader = new BufferedReader(new FileReader("data/contacts.csv"));
         while ((line = bufferedReader.readLine()) != null) {
             String data[] = line.split(",");
-            String number = data[0];
+            String phoneNumber = data[0];
             String group = data[1];
             String name = data[2];
             String gender = data[3];
             String address = data[4];
             String birthday = data[5];
             String email = data[6];
-            phoneList.add(new  PhoneBook(number,group,name,gender,address,birthday,email));
+            phoneList.add(new  PhoneBook(phoneNumber,group,name,gender,address,birthday,email));
         }
     } catch (FileNotFoundException e) {
         System.err.println("File not found");
